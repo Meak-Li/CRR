@@ -14,8 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from django.views.static import serve
+from django.conf import settings
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 用户登录
+    path('login/',views.acc_login),
+    # 展示预订信息
+    path('index/',views.index),
+    # 极验滑动验证码 获取验证码的url
+    path('pc-geetest/register', views.get_geetest),
+    # media相关的路由设置
+    re_path(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
+    # 处理预订请求
+    path('book/',views.book),
+    # 首页
+    path('home/',views.home),
+    # 注销
+    path('logout/',views.acc_logout),
+    # 用户注册
+    path('reg/',views.reg),
+    # 临时测试
+    path('test/',views.test),
+    # 修改密码
+    path('change_password/',views.change_password),
+    # about
+    path('about/',views.about),
 ]
