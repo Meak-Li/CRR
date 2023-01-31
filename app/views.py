@@ -32,7 +32,7 @@ def acc_login(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                res["msg"] = "/index/"
+                res["msg"] = "/home/"
             else:
                 res["status"] =1
                 res["msg"] = "认证失败,请检查用户名及密码是否正确"
