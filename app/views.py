@@ -46,7 +46,8 @@ def acc_login(request):
 
 @login_required(login_url="/login/")
 def index(request):
-
+    # 获取user的联系方式
+    qq = models.UserInfo.objects.first().qq
     date = datetime.datetime.now().date()
     # 如果没有指定日期，默认使用当天日期
     book_date = request.GET.get("book_date",date)
@@ -81,7 +82,7 @@ def index(request):
             else:
                 htmls += '<td class="item"  room_id={} time_id={}></td>'.format(room.pk,time[0])
         htmls += "</tr>"
-    return render(request,'index.html',{"time_choice":time_choice,"htmls":htmls,})
+    return render(request,'index.html',{"time_choice":time_choice,"htmls":htmls,"qq":qq})
 
 
 @login_required(login_url="/login/")

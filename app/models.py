@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 class UserInfo(AbstractUser):
     tel = models.CharField(max_length=32,verbose_name="电话")
     avatar = models.FileField(upload_to="avatars/", default="avatars/timg.jpg", verbose_name="头像")
+    qq = models.CharField(max_length=50,verbose_name="qq")
 
 
 class Room(models.Model):
