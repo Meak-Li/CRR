@@ -27,13 +27,7 @@
 
 </head>
 <body class="theme-blue-gradient pace-done" style="overflow: hidden; ">
-{#<div class="page-header">#}
-{#  <h1 class="text-center">欢迎来到会议室预订系统</h1>#}
-{#</div>#}
 <div class="pace  pace-inactive">
-    {#      <div class="pace-progress" style="width: 100%;" data-progress-text="100%" data-progress="99">#}
-    {#        <div class="pace-progress-inner"></div>#}
-    {#      </div>#}
     <div class="pace-activity"></div>
 </div>
 <div id="ajax-loader"
@@ -62,18 +56,17 @@
                     <ul class="nav navbar-nav pull-right">
                         <li class="dropdown profile-dropdown">
                             <a class="dropdown" href="#" data-toggle="dropdown">
-                                <!-- <img class="img-qrcode img-qrcode-46" src="images/ftsucai.png" alt="用户头像" /> -->
-                                <span class="hidden-xs">当前用户：{{ request.user.username }}&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                                <span class="hidden-xs">Current user：{{ request.user.username }}&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
                         <li>
                             <a class="submenuitem" href="pages_profile.html" data-id="rofile" data-index="100"><i
-                                    class="ft ftsucai-58"></i>个人信息</a>
+                                    class="ft ftsucai-58"></i>Personal information</a>
                         </li>
                         <li>
-                            <a class="submenuitem" href="pages_edit_pwd.html" data-id="linkpwd" data-index="101"><i
-                                    class="ft ftsucai-edit-2"></i>修改密码</a>
+                            <a class="submenuitem" href="http://127.0.0.1:8000/change_password" data-id="linkpwd" data-index="101"><i
+                                    class="ft ftsucai-edit-2"></i>Change password</a>
                         </li>
                         <li>
-                            <a href="pages_login.html"><i class="ft ftsucai-exit2"></i>安全退出</a>
+                            <a href="pages_login.html"><i class="ft ftsucai-exit2"></i>Retreat safely</a>
                         </li>
                     </ul>
                 </div>
@@ -91,7 +84,6 @@
                                     <a class="dropdown-toggle" href="#" data-id="a1">
                                         <i class="ft ftsucai-82"></i>
                                         <span>Dashboard</span>
-                                        <i class="ft ftsucai-139 drop-icon"></i>
                                     </a>
                                 </li>
                                 <li>
@@ -138,25 +130,6 @@
                     <button class="roll-nav roll-right tabRight">
                         <i class="ft ftsucai-forward3"></i>
                     </button>
-                    <div class="btn-group roll-nav roll-right">
-                        <button class="dropdown tabClose" data-toggle="dropdown">页签操作
-                            <i class="ft caret" style="padding-top: 3px;"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <a class="tabReload" href="javascript:void();"><i class="ft ftsucai-spinner3"></i>刷新当前页面</a>
-                            </li>
-                            <li>
-                                <a class="tabCloseCurrent" href="javascript:void();"><i class="ft ftsucai-close-3"></i>关闭当前页面</a>
-                            </li>
-                            <li>
-                                <a class="tabCloseAll" href="javascript:void();"><i class="ft ftsucai-77"></i>关闭全部页面</a>
-                            </li>
-                            <li>
-                                <a class="tabCloseOther" href="javascript:void();"><i class="ft ftsucai-120"></i>除此之外全关</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="content-iframe" style="background-color: #f9f9f9;">
                     <div class="mainContent" id="content-main" style="margin: 0px; padding: 0px; height: 1050px;">
@@ -171,7 +144,7 @@
 
                         <div class="calender pull-right">
                             <div class='input-group' style="width: 230px;">
-                                <span class="text-warning">注意：当前日期高亮显示</span>
+                                <span class="text-warning">Note: today is highlighted</span>
                                 <input type='text' autocomplete="off" class="form-control" id='datetimepicker11'
                                        placeholder="请选择日期"/>
                                 <span class="input-group-addon">
@@ -186,7 +159,7 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th>会议室/时间</th>
+                                <th>meeting room/time</th>
                                 {% for row in time_choice %}
                                     <th>{{ row.1 }}</th>
                                 {% endfor %}
@@ -199,7 +172,7 @@
                         </table>
                         <div>{% csrf_token %}</div>
                         <div class="col-lg-offset-6">
-                            <button class="btn btn-info book_btn">预订</button>
+                            <button class="btn btn-info book_btn">Booking</button>
                         </div>
                     </div>
                 </div>
@@ -209,71 +182,11 @@
 </div>
 <div id="loadingPage" style="display: none;">
     <div class="loading-shade"></div>
-    <div class="loading-content" onclick="$.loading(false)">数据加载中，请稍后…</div>
+    <div class="loading-content" onclick="$.loading(false)">Loading data, please wait...</div>
 </div>
 
 
 <div>
-    {#    <!-- 固定导航栏 -->#}
-    {#    <nav class="navbar navbar-default navbar-fixed-top" style="background: #475059">#}
-    {#      <div class="container">#}
-    {#        <div class="navbar-header">#}
-    {#          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">#}
-    {#            <span class="sr-only">Toggle navigation</span>#}
-    {#            <span class="icon-bar"></span>#}
-    {#            <span class="icon-bar"></span>#}
-    {#            <span class="icon-bar"></span>#}
-    {#          </button>#}
-    {#          <a class="navbar-brand" href="/home/">会议室预订系统</a>#}
-    {#        </div>#}
-    {#        <div id="navbar" class="navbar-collapse collapse">#}
-    {#          <ul class="nav navbar-nav">#}
-    {#            <li class="active"><a href="/home/">Home</a></li>#}
-    {#            <li><a href="/about/">About</a></li>#}
-    {#            <li><a href="tencent://message/?uin=3152609963&Site=QQ交谈&Menu=yes" target="blank"><img border="0" src="../static/img/QQ.png" alt="图片不正常时显示的文字" width="24" height="24" /></a>#}
-    {##}
-    {#            </li>#}
-    {#          </ul>#}
-    {#            <ul class="nav navbar-nav navbar-right">#}
-    {##}
-    {#                <!--右上角个人中心-->#}
-    {#                <div>#}
-    {#                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
-    {##}
-    {#                        <ul class="nav navbar-nav navbar-right">#}
-    {#                            {% if request.user.username %}#}
-    {#                                <li><a href="/index/">{{ request.user.username }}</a></li>#}
-    {#                                <li class="dropdown">#}
-    {#                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"#}
-    {#                                       aria-haspopup="true"#}
-    {#                                       aria-expanded="false">个人中心 <span class="caret"></span></a>#}
-    {#                                    <ul class="dropdown-menu">#}
-    {#                                        <li><a id="book" href="#" book_ret="{{ book_ret }}">预订信息</a></li>#}
-    {#                                        <li class="text-lowercase text-center">#}
-    {#                                            {% if book_ret %}#}
-    {#                                                <span style="color: yellowgreen;margin-left: -55px"><a#}
-    {#                                                        href="/index/">查看</a></span>#}
-    {#                                            {% else %}#}
-    {##}
-    {#                                                <span class="text-center" style="color: yellowgreen;">暂无</span>#}
-    {#                                            {% endif %}#}
-    {#                                        </li>#}
-    {#                                        <li role="separator" class="divider"></li>#}
-    {#                                        <li><a href="/change_password/">修改密码</a></li>#}
-    {#                                        <li><a href="/logout/">注销</a></li>#}
-    {#                                    </ul>#}
-    {#                                </li>#}
-    {#                            {% else %}#}
-    {#                                <li><a href="/login/">登录</a></li>#}
-    {#                                <li><a href="/reg/">注册</a></li>#}
-    {#                            {% endif %}#}
-    {#                        </ul>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </ul>#}
-    {#        </div><!--/.nav-collapse -->#}
-    {#      </div>#}
-    {#    </nav>#}
 
 
     <script src="/static/js/jquery-3.3.1.min.js"></script>
@@ -374,13 +287,13 @@
                     console.log(data);
                     if (data.status == 1) {
 
-                        alert("预订成功");
+                        alert("Booking succeed");
                         location.href = "";
                     } else if (data.status == 2) {
-                        alert("未修改信息");
+                        alert("Unmodified information");
                         location.href = "";
                     } else {
-                        alert("已经被预定")
+                        alert("Already booked")
                         location.href = ""
                     }
                 },
@@ -411,12 +324,12 @@
             var test = $(this).val();
             if (isDate(test)) {
                 if (test < TODAY_DATE) {
-                    alert("注意：日期不能小于当前日期!")
+                    alert("Note: the date cannot be less than the current date!")
                 }
                 CHOOSE_DATE = test;
                 location.href = "/index/?book_date=" + CHOOSE_DATE;
             } else {
-                alert("日期格式错误！");
+                alert("Wrong date format!");
                 location.href = '';
             }
         });
@@ -438,9 +351,9 @@
 
         var num = $("#book").attr("book_ret");
         if (num) {
-            toastr.info('您目前有' + num + '个预订信息');
+            toastr.info('You currently have' + num + 'reservations');
         } else {
-            toastr.Warning('您目前没有预订信息');
+            toastr.Warning('You currently have no booking information');
         }
     </script>
 </body>
