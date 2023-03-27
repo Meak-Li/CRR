@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Who am I? — The Binding of Isaac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+    <link rel="stylesheet" href="../static/css/user_style.css">
+
+
+</head>
+
+<body>
+<div class="wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+        <defs>
+            <filter id="lighting">
+                <feColorMatrix type="luminanceToAlpha" result="luminance" in="SourceGraphic"></feColorMatrix>
+                <feGaussianBlur in="luminance" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feSpecularLighting in="blur" surfaceScale="7" specularExponent="5" result="specular"
+                                    lighting-color="#white">
+                    <fePointLight z="50"></fePointLight>
+                </feSpecularLighting>
+
+                <feSpecularLighting specularExponent="5" result="specular2" in="SourceGraphic">
+                    <fePointLight y="400" z="50"></fePointLight>
+                </feSpecularLighting>
+                <feComposite operator="arithmetic" k1="2" k2="0.5" result="composite" in="SourceGraphic"
+                             in2="specular2"></feComposite>
+
+                <feComposite in="specular" in2="composite" operator="arithmetic" k1="1" k3="0.5"></feComposite>
+            </filter>
+
+            <filter id="demonic-glow" primitiveUnits="objectBoundingBox">
+                <feColorMatrix in="SourceGraphic"
+                               type="matrix"
+                               values="1 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                1 0 0 0 0"/>
+                <!-- 1 -3 -3 0 0 as last line for reds only, no red whites -->
+                <feGaussianBlur in2="SourceGraphic" stdDeviation="0.025"/>
+                <feComposite in="SourceGraphic" operator="arithmetic" k2="1" k3="2"/>
+            </filter>
+
+            <filter id="bloom" primitiveUnits="objectBoundingBox">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.005"/>
+                <feComposite in2="SourceGraphic" operator="arithmetic" k2="0.2" k3="0.9"/>
+            </filter>
+
+            <filter id="ghostly-glow" primitiveUnits="objectBoundingBox">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.075"/>
+                <feComposite in2="SourceGraphic" operator="arithmetic" k2="1" k3="0.5"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="scene" class="scene">
+        <div id="sceneShadow" class="scene__shadow scene__shadow--dark"></div>
+        <div id="sceneShadowGhostly" class="scene__shadow scene__shadow--ghostly"></div>
+    </div>
+
+    <div id="charactersContainer" class="characters-container">
+        <div class="character filter--ghostly-glow">
+            <canvas id="lost-zdog" class="character__body" width="400" height="500"></canvas>
+            <div id="lost-particles" class="particles"></div>
+        </div>
+        <div class="character filter--semi-bloom">
+            <canvas id="isaacShadowFront" class="character__shadow character__shadow--front" width="800"
+                    height="1000"></canvas>
+            <canvas id="isaacShadowBack" class="character__shadow character__shadow--back" width="800"
+                    height="1000"></canvas>
+            <canvas id="isaac-zdog" class="character__body filter--lighting" width="400" height="1000"></canvas>
+        </div>
+        <div class="character filter--demonic-glow">
+            <canvas id="azazelShadowFront" class="character__shadow character__shadow--front" width="800"
+                    height="1000"></canvas>
+            <canvas id="azazelShadowBack" class="character__shadow character__shadow--back" width="800"
+                    height="1000"></canvas>
+            <canvas id="azazel-zdog" class="character__body filter--lighting" width="400" height="1000"></canvas>
+            <div id="azazel-particles" class="particles"></div>
+        </div>
+    </div>
+</div>
+<script src='https://unpkg.com/zdog@1/dist/zdog.dist.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+
+
+<script src="../static/js/user_script.js"></script>
+
+
+</body>
+
+</html>

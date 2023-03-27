@@ -18,6 +18,7 @@ from django.urls import path, re_path
 from django.views.static import serve
 from django.conf import settings
 from app import views
+from application.user_information.views import UserInformationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,10 +38,10 @@ urlpatterns = [
     path('logout/',views.acc_logout),
     # 用户注册
     path('reg/',views.reg),
-    # 临时测试
-    path('test/',views.test),
     # 修改密码
     path('change_password/',views.change_password),
     # about
     path('about/',views.about),
+    # user information
+    path('user_information/', UserInformationView.as_view())
 ]
