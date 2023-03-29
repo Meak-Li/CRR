@@ -12,9 +12,11 @@ from rest_framework.views import APIView
 
 # Create your views here.
 
+class LoginView(APIView):
+    def get(self, request):
+        return render(request, 'login.html')
 
-def acc_login(request):
-    if request.method == "POST":
+    def post(self, request):
         print(request.POST)
         res = {"status": 0, "msg": ""}
         username = request.POST.get("username")
@@ -44,7 +46,6 @@ def acc_login(request):
             res["msg"] = "验证码错误"
         print("**************", res)
         return JsonResponse(res)
-    return render(request, 'login.html')
 
 
 @login_required(login_url="/login/")

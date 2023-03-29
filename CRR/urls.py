@@ -18,12 +18,13 @@ from django.urls import path, re_path
 from django.views.static import serve
 from django.conf import settings
 from app import views
+from app.views import LoginView
 from application.user_information.views import UserInformationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 用户登录
-    path('login/',views.acc_login),
+    path('login/',LoginView.as_view()),
     # 展示预订信息
     path('index/',views.index),
     # 极验滑动验证码 获取验证码的url
