@@ -19,7 +19,7 @@ from django.views.static import serve
 from django.conf import settings
 from app import views
 from app.views import LoginView
-from application.user_information.views import UserInformationView
+from application.user_information.views import UserInformationView, UserInformationLittleView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,5 +44,6 @@ urlpatterns = [
     # about
     path('about/',views.about),
     # user information
-    path('user_information/', UserInformationView.as_view())
+    path('user_information/', UserInformationView.as_view()),
+    path('user_information_2/', UserInformationLittleView.as_view())
 ]
