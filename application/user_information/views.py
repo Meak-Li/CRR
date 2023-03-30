@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 class UserInformationView(APIView):
 
     def get(self, request, *args, **kwargs):
-        name = request.GET.get('name')
+        name = request.user.username
         return render(request, 'user_information_1.html', {'name': name})
 
 
