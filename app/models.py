@@ -7,6 +7,10 @@ class UserInfo(AbstractUser):
     tel = models.CharField(max_length=32,verbose_name="电话")
     avatar = models.FileField(upload_to="avatars/", default="avatars/timg.jpg", verbose_name="头像")
     qq = models.CharField(max_length=50,verbose_name="qq")
+    college = models.CharField(max_length=32, verbose_name="学院")
+    department = models.CharField(max_length=32, verbose_name="部门")
+    position = models.CharField(max_length=32, verbose_name="职位")
+    classes = models.CharField(max_length=64, verbose_name="管理的班级")
 
 
 class Room(models.Model):
